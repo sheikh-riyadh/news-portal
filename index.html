@@ -23,7 +23,7 @@
                     <a href="#" class="text-decoration-none fw-semibold fs-4">News</a>
                 </div>
                 <div class="p-3">
-                    <a href="#" class="text-decoration-none fw-semibold fs-4">Blogs</a>
+                    <a target="_blank" href="blogs.html" class="text-decoration-none fw-semibold fs-4">Blogs</a>
                 </div>
             </div>
         </div>
@@ -51,44 +51,47 @@
         </section>
     </header>
 
-    <!-- Loading spinner -->
-    <section>
-        <div>
-            <div class="d-flex justify-content-center">
-                <div id="spinner-container" class="spinner-grow text-primary d-none" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEWS ITEMS -->
-    <section id="card-items-container" class="container">
-    </section>
-
-
-
-
-    <!-- MODAL SECTION -->
-    <section class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newsModalLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div id="modal-body-container" class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <main class="container">
+        <!-- Loading spinner -->
+        <section>
+            <div>
+                <div class="d-flex justify-content-center">
+                    <div id="spinner-container" class="spinner-grow text-primary d-none" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- NEWS ITEMS -->
+        <section id="card-items-container">
+            <!-- ITEMS BODY -->
+        </section>
+
+
+
+
+        <!-- MODAL SECTION -->
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="newsModal" tabindex="-1" aria-labelledby="newsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newsModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="modal-body-container" class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 
     <!-- Bootstrap js cdn file -->
