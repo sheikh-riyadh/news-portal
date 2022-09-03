@@ -9,12 +9,12 @@ const loadDefaultItems = async () => {
 }
 
 const showDefaultItems = (datas) => {
-    const cardContainer = document.getElementById('card-container');
+    const cardContainer = document.getElementById('card-items-container');
     for (const data of datas) {
         const cardDiv = document.createElement('div');
         console.log(data)
         cardDiv.innerHTML = `
-        <div class="card mb-3 shadow">
+        <div class="card my-3 shadow">
             <div class="row g-0 d-flex p-3">
                 <div class="col-md-4">
                     <img src="${data.image_url}" class="img-fluid rounded-start h-100" alt="...">
@@ -48,7 +48,7 @@ const showDefaultItems = (datas) => {
                             </div>
                             <!-- Button -->
                             <div>
-                                <div onclick="itemDetail()" class="btn btn-primary">Details</div>
+                                <button onclick="loadItemsDetails('${data?._id}')" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newsModal">Details</button>
                             </div>
                         </div>
                     </div>
@@ -56,8 +56,30 @@ const showDefaultItems = (datas) => {
             </div>
         </div>
         `;
-        cardContainer.appendChild(cardDiv)
+        cardContainer.appendChild(cardDiv);
     }
+}
+
+
+/* Details button */
+const loadItemsDetails = async (id) => {
+
+    /* Get unique news item id */
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+    showItemsDetails(data)
+}
+
+
+/* Show item details */
+const showItemsDetails = (data) => {
+    /* Get modal title element */
+    const newsModalTitle = document.getElementById('newsModalLabel')
+
+    /* Set news title on modal */
+    newsModalTitle.innerText = data?.data[0]?.title;
 }
 
 loadDefaultItems()
