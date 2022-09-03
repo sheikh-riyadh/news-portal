@@ -3,13 +3,11 @@ Show default news items on home page
 ============================================ */
 
 const loadNewsItems = async (id = '08') => {
-    const spinner = document.getElementById('spinner-container');
-
-    spinner.classList.remove('d-none')
+    spinner(true)
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-    const res = await fetch(url)
-    const data = await res.json()
-    showDefaultItems(data.data)
+    const res = await fetch(url);
+    const data = await res.json();
+    showDefaultItems(data.data);
 }
 
 const showDefaultItems = (datas) => {
@@ -71,10 +69,8 @@ const showDefaultItems = (datas) => {
         `;
         /* Append cards */
         cardContainer.appendChild(cardDiv);
-        const spinner = document.getElementById('spinner-container');
-
-        spinner.classList.add('d-none')
     }
+    spinner(false);
 }
 
 
@@ -89,6 +85,15 @@ const loadItemsDetails = async (id) => {
     showItemsDetails(data.data)
 }
 
+const spinner = (isTrue) => {
+    const spinnerContainer = document.getElementById('spinner-container');
+
+    if (isTrue) {
+        spinnerContainer.classList.remove('d-none')
+    } else {
+        spinnerContainer.classList.add('d-none')
+    }
+}
 
 /* Show item details */
 const showItemsDetails = (data) => {
