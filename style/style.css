@@ -1,5 +1,6 @@
 /* Author image  */
-.author-details>img {
+.author-details>img,
+.my-img>img {
     width: 50px;
     height: 50px;
 }
