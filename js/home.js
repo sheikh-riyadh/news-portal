@@ -2,12 +2,16 @@
 Show default news items on home page
 ============================================ */
 
-const loadNewsItems = async (id = '08') => {
-    spinner(true)
-    const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-    const res = await fetch(url);
-    const data = await res.json();
-    showDefaultItems(data.data);
+const loadNewsItems = async (id = '02') => {
+    try {
+        spinner(true)
+        const url = `https://openapi.programming-hero.com/api/news/category/${id}`
+        const res = await fetch(url);
+        const data = await res.json();
+        showDefaultItems(data.data);
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 const showDefaultItems = (datas) => {
@@ -76,13 +80,16 @@ const showDefaultItems = (datas) => {
 
 /* Details button */
 const loadItemsDetails = async (id) => {
+    try {
+        /* Get unique news item id */
+        const url = `https://openapi.programming-hero.com/api/news/${id}`;
 
-    /* Get unique news item id */
-    const url = `https://openapi.programming-hero.com/api/news/${id}`;
-
-    const res = await fetch(url);
-    const data = await res.json();
-    showItemsDetails(data.data)
+        const res = await fetch(url);
+        const data = await res.json();
+        showItemsDetails(data.data)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 /* Loading spinner */

@@ -26,7 +26,6 @@ const dispplayCategories = (categories) => {
 }
 
 const showCategory = (id) => {
-    console.log(id)
     loadNewsItems(id);
 }
 categories()
