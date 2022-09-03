@@ -16,9 +16,9 @@ const showDefaultItems = (datas) => {
     /* Get category elements */
     const categoryElement = document.getElementById('category-name');
 
-    /* Set total items on display */
+    /* Set total items count*/
     itemsCount.innerText = datas.length;
-
+    /* Get Card container element  */
     const cardContainer = document.getElementById
         ('card-items-container');
     cardContainer.textContent = '';
@@ -85,6 +85,7 @@ const loadItemsDetails = async (id) => {
     showItemsDetails(data.data)
 }
 
+/* Loading spinner */
 const spinner = (isTrue) => {
     const spinnerContainer = document.getElementById('spinner-container');
 

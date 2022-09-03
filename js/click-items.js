@@ -4,8 +4,7 @@ Show items when user click news items
 const categories = async () => {
     const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
     const data = await res.json();
-    dispplayCategories(data.data.news_category)
-    /* console.log(data.data.news_category) */
+    dispplayCategories(data.data.news_category);
 }
 
 const dispplayCategories = (categories) => {
