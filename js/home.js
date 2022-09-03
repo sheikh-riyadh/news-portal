@@ -2,17 +2,30 @@
 Show default news items on home page
 ============================================ */
 
-const loadDefaultItems = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/news/category/01')
+const loadNewsItems = async (id = '08') => {
+    const spinner = document.getElementById('spinner-container');
+
+    spinner.classList.remove('d-none')
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`
+    const res = await fetch(url)
     const data = await res.json()
     showDefaultItems(data.data)
 }
 
 const showDefaultItems = (datas) => {
-    const cardContainer = document.getElementById('card-items-container');
+    /* Get category count element */
+    const itemsCount = document.getElementById('item-count');
+    /* Get category elements */
+    const categoryElement = document.getElementById('category-name');
+
+    /* Set total items on display */
+    itemsCount.innerText = datas.length;
+
+    const cardContainer = document.getElementById
+        ('card-items-container');
+    cardContainer.textContent = '';
     for (const data of datas) {
         const cardDiv = document.createElement('div');
-        console.log(data)
         cardDiv.innerHTML = `
         <div class="card my-3 shadow">
             <div class="row g-0 d-flex p-3">
@@ -29,13 +42,13 @@ const showDefaultItems = (datas) => {
                             <!-- Author details -->
                             <div class="author-details d-flex align-items-center">
                                 <img class="img-fluid rounded-circle" src="${data?.author?.img}" alt="" srcset="">
-                                <p class="px-2">${data?.author?.name}</p>
+                                <p class="px-2">${data?.author?.name ? data?.author?.name : 'no data found'}</p>
                             </div>
                             <!-- View details -->
                             <div>
                                 <div class="view-container">
                                     <i class="fa-solid fa-eye"></i>
-                                    <span>${data?.total_view}</span>
+                                    <span>${data?.total_view ? data?.total_view : 'no data found'}</span>
                                 </div>
                             </div>
                             <!-- Ratings -->
@@ -58,6 +71,9 @@ const showDefaultItems = (datas) => {
         `;
         /* Append cards */
         cardContainer.appendChild(cardDiv);
+        const spinner = document.getElementById('spinner-container');
+
+        spinner.classList.add('d-none')
     }
 }
 
@@ -76,7 +92,6 @@ const loadItemsDetails = async (id) => {
 
 /* Show item details */
 const showItemsDetails = (data) => {
-    console.log(data)
     /* Get modal title element */
     const newsModalTitle = document.getElementById('newsModalLabel')
     /* Set news title on modal */
@@ -95,4 +110,4 @@ const showItemsDetails = (data) => {
     `;
 }
 
-loadDefaultItems()
+loadNewsItems()

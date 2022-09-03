@@ -17,8 +17,9 @@ const dispplayCategories = (categories) => {
         const li = document.createElement('li');
         /* Added class */
         li.classList.add('nav-item')
+        /* Set innerHTML */
         li.innerHTML = `
-        <a onclick="showCategory('${category.category_id}')" class ="text-decoration-none p-2 fs-5">${category.category_name}</a>
+        <a onclick="showCategory('${category?.category_id}')" class ="text-decoration-none p-2 fs-5">${category?.category_name}</a>
       `;
         categoriesItemsContainer.appendChild(li)
 
@@ -27,5 +28,6 @@ const dispplayCategories = (categories) => {
 
 const showCategory = (id) => {
     console.log(id)
+    loadNewsItems(id);
 }
 categories()

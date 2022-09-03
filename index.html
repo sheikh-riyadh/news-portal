@@ -43,12 +43,30 @@
                 </div>
             </div>
         </nav>
+
+        <section>
+            <div class="p-3 bg-white rounded shadow">
+                <h5><span id="item-count"></span> items found for category <span id="category-name"></span></h5>
+            </div>
+        </section>
     </header>
 
+    <!-- Loading spinner -->
+    <section>
+        <div>
+            <div class="d-flex justify-content-center">
+                <div id="spinner-container" class="spinner-grow text-primary d-none" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- NEWS ITEMS -->
     <section id="card-items-container" class="container">
     </section>
+
+
 
 
     <!-- MODAL SECTION -->
@@ -71,8 +89,6 @@
             </div>
         </div>
     </section>
-
-
 
 
     <!-- Bootstrap js cdn file -->
