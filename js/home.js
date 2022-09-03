@@ -25,7 +25,7 @@ const showDefaultItems = (datas) => {
                         <p class="card-text d-block text-truncate w-100 h-100">${data?.details}</p>
                         
 
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between flex-column flex-md-row">
                             <!-- Author details -->
                             <div class="author-details d-flex align-items-center">
                                 <img class="img-fluid rounded-circle" src="${data?.author?.img}" alt="" srcset="">
@@ -56,6 +56,7 @@ const showDefaultItems = (datas) => {
             </div>
         </div>
         `;
+        /* Append cards */
         cardContainer.appendChild(cardDiv);
     }
 }
@@ -69,17 +70,29 @@ const loadItemsDetails = async (id) => {
 
     const res = await fetch(url);
     const data = await res.json();
-    showItemsDetails(data)
+    showItemsDetails(data.data)
 }
 
 
 /* Show item details */
 const showItemsDetails = (data) => {
+    console.log(data)
     /* Get modal title element */
     const newsModalTitle = document.getElementById('newsModalLabel')
-
     /* Set news title on modal */
-    newsModalTitle.innerText = data?.data[0]?.title;
+    newsModalTitle.innerText = data[0]?.title;
+
+    /* Get modal body element */
+    const modalBodyContainer = document.getElementById('modal-body-container');
+    /* Added class */
+    modalBodyContainer.classList.add('p-4')
+    /* Set innerHTML on modal body element */
+    modalBodyContainer.innerHTML = `
+    <img class="img-fluid" src = ${data[0]?.image_url}></img>
+    <h6 class="py-2">Publishe date: ${data[0]?.author.published_date}</h6>
+    <p>${data[0]?.details}</>
+    
+    `;
 }
 
 loadDefaultItems()
