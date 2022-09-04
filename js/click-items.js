@@ -1,15 +1,17 @@
 /*===========================================
 Show items when user click news items 
 =============================================*/
-try {
-    const categories = async () => {
+
+const categories = async () => {
+    try {
         const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
         const data = await res.json();
         dispplayCategories(data.data.news_category);
+    } catch (e) {
+        alert('Something is wrong');
     }
-} catch (e) {
-    alert('something is wrong');
 }
+
 
 const dispplayCategories = (categories) => {
     /* Categories container */
