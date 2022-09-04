@@ -10,7 +10,7 @@ const loadNewsItems = async (id = '02') => {
         const data = await res.json();
         showDefaultItems(data.data);
     } catch (e) {
-        console.log(e)
+        alert('something is wrong');
     }
 }
 
